@@ -1,0 +1,24 @@
+name: CI desafio
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        name: Docs
+        runs-on: ubuntu-latest
+        
+        steps:
+              
+            - name: Copia arquivos
+              uses: actions/checkout@v4
+
+            - name: Setup python
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.9.16
+
+            - name: executar
+              run: pydocstyle --select=D103
