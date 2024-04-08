@@ -1,0 +1,26 @@
+name: CI tests
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+  test:
+      name: Test functions
+      runs-on: ubuntu-latest
+      
+      steps:
+            - name: Copia arquivos
+              uses: actions/checkout@v4
+            
+            - name: Setup python
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.9.16
+            
+            - name: Instala libs
+              run: pip install -r requirements.txt
+              
+            - name: executar
+              run: pydocstyle --select=D103
